@@ -1,0 +1,34 @@
+/*
+vars
+*/
+
+$black: #010000;
+$white: #ffffff;
+
+/*
+fonts
+*/
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  color: $black;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*
+Mixins
+*/
+
+@mixin transalateY($e) {
+  -webkit-transform: transalatey($e);
+   -moz-transform: transalateY($e);
+        transform: transalateY($se);
+}
+
+@mixin translate($e) {
+  -webkit-transition:$e;
+   -moz-transition:$e;
+         transition:$e;
+}
