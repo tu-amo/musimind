@@ -4,27 +4,38 @@ vars
 
 $black: #010000;
 $white: #ffffff;
+$red: #ff1755;
 
 /*
 fonts
 */
 
 body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 18px;
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
   color: $black;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 100;
+  font-style: regular;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    color: $red;
+  }
+
 }
 
 /*
 Mixins
 */
 
-@mixin transalateY($e) {
-  -webkit-transform: transalatey($e);
-   -moz-transform: transalateY($e);
-        transform: transalateY($se);
+@mixin translateY($e) {
+  -webkit-transform: translateY($e);
+   -moz-transform: translateY($e);
+        transform: translateY($e);
 }
 
 @mixin translate($e) {
