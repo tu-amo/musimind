@@ -1,55 +1,70 @@
 # History
 
-## vNext
+# 7.1.0
 
-TBA
+- Updates whatwg-fetch to 3.5.0 to address an issue with IE11.
 
-## v2.2.0
+## 7.0.0
 
-Add indentation to values with multiline strings & added ESM module
+ - Drops support for node 8. Adds node 14 to tests.
+ - Updates whatwg-fetch to ~3.4.1.
+ - Exposes `DOMException` from whatwg-fetch.
+ - Tests against webpack 5 and browserify 17.
 
-- Updated all dependencies to their latest version
-- Updated CI settings (added node 16, multiple os platforms)
-- Moved from Travis CI to Github Actions
+## 6.1.0
 
-## v2.1.1
+ - Adds a types field to package.json for TypeScript integration.
+ - Updates node-fetch to 2.6.0
 
-Security update with dependency changes
+## 6.0.2
 
-- Updated all dependencies to their latest version
-- Updated CI settings (added node 15)
+ - Fixes WHATWG URL object handling when this module is used in Node.
 
-## v2.1.0
+## 6.0.1
 
-- Correctly handle escape sequences when used as a tag
-- Add test build to CI
-- Only run coverage once per change
+ - Fixes to the TypeScript declaration file.
 
-## v2.0.0
+## 6.0.0
 
-Fixes #4
+ - Adjusts the way the global object is sniffed for use with Metro.
 
-- ! Might break/change existing behavior
-- If a line does not start with whitespace don't remove the indentation
+## 5.0.0
 
-## v1.2.0
+ - Bumps node-fetch from ~1.7.1 to ~2.0.0. This is a potentially breaking
+   change. Refer to the node-fetch [upgrade guide](https://github.com/bitinn/node-fetch/blob/master/UPGRADE-GUIDE.md)
+   for details.
 
-Security update with dependency changes
+## 4.1.0
 
-- Updated all dependencies to their latest version
-- Updated CI settings
-- Replaced tslint with typescript-eslint
-- Removed unused @types/node
-- Added lint to run with the test suite
+ - Bumps node fetch from ~1.6.0 to ~1.7.1.
+ - Bumps whatwg-fetch from ~2.0.1 to ~2.0.3.
 
-## v1.1.0
+## 4.0.0
 
-Security update with dependency changes
+This release:
 
-- Updated all dependencies to their latest version
+ - Bumps whatwg-fetch from ~1.0.0 to ~2.0.1.
+ - Better handling of self/this for browser fetch (more testing friendly).
 
-## v1.0.0
+## 3.0.2
 
-First release includes following functions
+Dependencies now use tilde to allow patch versions to be tracked (this was
+waiting for whatwg-fetch to reach version 1).
 
-- `function dedent(TemplateStringsArray | string, ...any[]): string
+## 3.0.1
+
+A link was added to the README to point to the ponyfill definition.
+
+## 3.0.0
+
+Fixes an issue with detection of features like `URLSearchParams`. This is a
+major version bump since apparent behaviour could change in a breaking way in
+browsers which support detected features.
+
+## 2.0.0
+
+Now exposes associated constructors along with `fetch` like:
+
+```javascript
+const {fetch, Request, Response, Headers} = require('fetch-ponyfill')(options);
+```
