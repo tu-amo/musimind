@@ -1,46 +1,56 @@
-# strip-ansi [![Build Status](https://travis-ci.org/chalk/strip-ansi.svg?branch=master)](https://travis-ci.org/chalk/strip-ansi)
+# require-from-string [![Build Status](https://travis-ci.org/floatdrop/require-from-string.svg?branch=master)](https://travis-ci.org/floatdrop/require-from-string)
 
-> Strip [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) from a string
-
+Load module from string in Node.
 
 ## Install
 
 ```
-$ npm install strip-ansi
+$ npm install --save require-from-string
 ```
 
 
 ## Usage
 
 ```js
-const stripAnsi = require('strip-ansi');
+var requireFromString = require('require-from-string');
 
-stripAnsi('\u001B[4mUnicorn\u001B[0m');
-//=> 'Unicorn'
-
-stripAnsi('\u001B]8;;https://github.com\u0007Click\u001B]8;;\u0007');
-//=> 'Click'
+requireFromString('module.exports = 1');
+//=> 1
 ```
 
 
-## strip-ansi for enterprise
+## API
 
-Available as part of the Tidelift Subscription.
+### requireFromString(code, [filename], [options])
 
-The maintainers of strip-ansi and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-strip-ansi?utm_source=npm-strip-ansi&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
+#### code
+
+*Required*  
+Type: `string`
+
+Module code.
+
+#### filename
+Type: `string`  
+Default: `''`
+
+Optional filename.
 
 
-## Related
+#### options
+Type: `object`
 
-- [strip-ansi-cli](https://github.com/chalk/strip-ansi-cli) - CLI for this module
-- [strip-ansi-stream](https://github.com/chalk/strip-ansi-stream) - Streaming version of this module
-- [has-ansi](https://github.com/chalk/has-ansi) - Check if a string has ANSI escape codes
-- [ansi-regex](https://github.com/chalk/ansi-regex) - Regular expression for matching ANSI escape codes
-- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
+##### appendPaths
+Type: `Array`
 
+List of `paths`, that will be appended to module `paths`. Useful, when you want
+to be able require modules from these paths.
 
-## Maintainers
+##### prependPaths
+Type: `Array`
 
-- [Sindre Sorhus](https://github.com/sindresorhus)
-- [Josh Junon](https://github.com/qix-)
+Same as `appendPaths`, but paths will be prepended.
 
+## License
+
+MIT © [Vsevolod Strukchinsky](http://github.com/floatdrop)
