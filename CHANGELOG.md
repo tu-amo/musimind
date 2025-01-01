@@ -1,100 +1,136 @@
-# Change Log
+# Release history
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+**All notable changes to this project will be documented in this file.**
 
-### [5.0.8](https://www.github.com/yargs/y18n/compare/v5.0.7...v5.0.8) (2021-04-07)
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
+and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+
+<details>
+  <summary><strong>Guiding Principles</strong></summary>
+
+- Changelogs are for humans, not machines.
+- There should be an entry for every single version.
+- The same types of changes should be grouped.
+- Versions and sections should be linkable.
+- The latest version comes first.
+- The release date of each versions is displayed.
+- Mention whether you follow Semantic Versioning.
+
+</details>
+
+<details>
+  <summary><strong>Types of changes</strong></summary>
+
+Changelog entries are classified using the following labels _(from [keep-a-changelog](http://keepachangelog.com/)_):
+
+- `Added` for new features.
+- `Changed` for changes in existing functionality.
+- `Deprecated` for soon-to-be removed features.
+- `Removed` for now removed features.
+- `Fixed` for any bug fixes.
+- `Security` in case of vulnerabilities.
+
+</details>
+
+## 2.3.1 (2022-01-02)
+
+### Fixed
+
+* Fixes bug when a pattern containing an expression after the closing parenthesis (`/!(*.d).{ts,tsx}`) was incorrectly converted to regexp ([9f241ef](https://github.com/micromatch/picomatch/commit/9f241ef)).
+
+### Changed
+
+* Some documentation improvements ([f81d236](https://github.com/micromatch/picomatch/commit/f81d236), [421e0e7](https://github.com/micromatch/picomatch/commit/421e0e7)).
+
+## 2.3.0 (2021-05-21)
+
+### Fixed
+
+* Fixes bug where file names with two dots were not being matched consistently with negation extglobs containing a star ([56083ef](https://github.com/micromatch/picomatch/commit/56083ef))
+
+## 2.2.3 (2021-04-10)
+
+### Fixed
+
+* Do not skip pattern seperator for square brackets ([fb08a30](https://github.com/micromatch/picomatch/commit/fb08a30)).
+* Set negatedExtGlob also if it does not span the whole pattern ([032e3f5](https://github.com/micromatch/picomatch/commit/032e3f5)).
+
+## 2.2.2 (2020-03-21)
+
+### Fixed
+
+* Correctly handle parts of the pattern after parentheses in the `scan` method ([e15b920](https://github.com/micromatch/picomatch/commit/e15b920)).
+
+## 2.2.1 (2020-01-04)
+
+* Fixes [#49](https://github.com/micromatch/picomatch/issues/49), so that braces with no sets or ranges are now propertly treated as literals.
+
+## 2.2.0 (2020-01-04)
+
+* Disable fastpaths mode for the parse method ([5b8d33f](https://github.com/micromatch/picomatch/commit/5b8d33f))
+* Add `tokens`, `slashes`, and `parts` to the object returned by `picomatch.scan()`.
+
+## 2.1.0 (2019-10-31)
+
+* add benchmarks for scan ([4793b92](https://github.com/micromatch/picomatch/commit/4793b92))
+* Add eslint object-curly-spacing rule ([707c650](https://github.com/micromatch/picomatch/commit/707c650))
+* Add prefer-const eslint rule ([5c7501c](https://github.com/micromatch/picomatch/commit/5c7501c))
+* Add support for nonegate in scan API ([275c9b9](https://github.com/micromatch/picomatch/commit/275c9b9))
+* Change lets to consts. Move root import up. ([4840625](https://github.com/micromatch/picomatch/commit/4840625))
+* closes https://github.com/micromatch/picomatch/issues/21 ([766bcb0](https://github.com/micromatch/picomatch/commit/766bcb0))
+* Fix "Extglobs" table in readme ([eb19da8](https://github.com/micromatch/picomatch/commit/eb19da8))
+* fixes https://github.com/micromatch/picomatch/issues/20 ([9caca07](https://github.com/micromatch/picomatch/commit/9caca07))
+* fixes https://github.com/micromatch/picomatch/issues/26 ([fa58f45](https://github.com/micromatch/picomatch/commit/fa58f45))
+* Lint test ([d433a34](https://github.com/micromatch/picomatch/commit/d433a34))
+* lint unit tests ([0159b55](https://github.com/micromatch/picomatch/commit/0159b55))
+* Make scan work with noext ([6c02e03](https://github.com/micromatch/picomatch/commit/6c02e03))
+* minor linting ([c2a2b87](https://github.com/micromatch/picomatch/commit/c2a2b87))
+* minor parser improvements ([197671d](https://github.com/micromatch/picomatch/commit/197671d))
+* remove eslint since it... ([07876fa](https://github.com/micromatch/picomatch/commit/07876fa))
+* remove funding file ([8ebe96d](https://github.com/micromatch/picomatch/commit/8ebe96d))
+* Remove unused funks ([cbc6d54](https://github.com/micromatch/picomatch/commit/cbc6d54))
+* Run eslint during pretest, fix existing eslint findings ([0682367](https://github.com/micromatch/picomatch/commit/0682367))
+* support `noparen` in scan ([3d37569](https://github.com/micromatch/picomatch/commit/3d37569))
+* update changelog ([7b34e77](https://github.com/micromatch/picomatch/commit/7b34e77))
+* update travis ([777f038](https://github.com/micromatch/picomatch/commit/777f038))
+* Use eslint-disable-next-line instead of eslint-disable ([4e7c1fd](https://github.com/micromatch/picomatch/commit/4e7c1fd))
+
+## 2.0.7 (2019-05-14)
+
+* 2.0.7 ([9eb9a71](https://github.com/micromatch/picomatch/commit/9eb9a71))
+* supports lookbehinds ([1f63f7e](https://github.com/micromatch/picomatch/commit/1f63f7e))
+* update .verb.md file with typo change ([2741279](https://github.com/micromatch/picomatch/commit/2741279))
+* fix: typo in README ([0753e44](https://github.com/micromatch/picomatch/commit/0753e44))
+
+## 2.0.4 (2019-04-10)
+
+### Fixed
+
+- Readme link [fixed](https://github.com/micromatch/picomatch/pull/13/commits/a96ab3aa2b11b6861c23289964613d85563b05df) by @danez.
+- `options.capture` now works as expected when fastpaths are enabled. See https://github.com/micromatch/picomatch/pull/12/commits/26aefd71f1cfaf95c37f1c1fcab68a693b037304. Thanks to @DrPizza.
+
+## 2.0.0 (2019-04-10)
+
+### Added
+
+- Adds support for `options.onIgnore`. See the readme for details
+- Adds support for `options.onResult`. See the readme for details
+
+### Breaking changes
+
+- The unixify option was renamed to `windows`
+- caching and all related options and methods have been removed
+
+## 1.0.0 (2018-11-05)
+
+- adds `.onMatch` option
+- improvements to `.scan` method
+- numerous improvements and optimizations for matching and parsing
+- better windows path handling
+
+## 0.1.0 - 2017-04-13
+
+First release.
 
 
-### Bug Fixes
-
-* **deno:** force modern release for Deno ([b1c215a](https://www.github.com/yargs/y18n/commit/b1c215aed714bee5830e76de3e335504dc2c4dab))
-
-### [5.0.7](https://www.github.com/yargs/y18n/compare/v5.0.6...v5.0.7) (2021-04-07)
-
-
-### Bug Fixes
-
-* **deno:** force release for deno ([#121](https://www.github.com/yargs/y18n/issues/121)) ([d3f2560](https://www.github.com/yargs/y18n/commit/d3f2560e6cedf2bfa2352e9eec044da53f9a06b2))
-
-### [5.0.6](https://www.github.com/yargs/y18n/compare/v5.0.5...v5.0.6) (2021-04-05)
-
-
-### Bug Fixes
-
-* **webpack:** skip readFileSync if not defined ([#117](https://www.github.com/yargs/y18n/issues/117)) ([6966fa9](https://www.github.com/yargs/y18n/commit/6966fa91d2881cc6a6c531e836099e01f4da1616))
-
-### [5.0.5](https://www.github.com/yargs/y18n/compare/v5.0.4...v5.0.5) (2020-10-25)
-
-
-### Bug Fixes
-
-* address prototype pollution issue ([#108](https://www.github.com/yargs/y18n/issues/108)) ([a9ac604](https://www.github.com/yargs/y18n/commit/a9ac604abf756dec9687be3843e2c93bfe581f25))
-
-### [5.0.4](https://www.github.com/yargs/y18n/compare/v5.0.3...v5.0.4) (2020-10-16)
-
-
-### Bug Fixes
-
-* **exports:** node 13.0 and 13.1 require the dotted object form _with_ a string fallback ([#105](https://www.github.com/yargs/y18n/issues/105)) ([4f85d80](https://www.github.com/yargs/y18n/commit/4f85d80dbaae6d2c7899ae394f7ad97805df4886))
-
-### [5.0.3](https://www.github.com/yargs/y18n/compare/v5.0.2...v5.0.3) (2020-10-16)
-
-
-### Bug Fixes
-
-* **exports:** node 13.0-13.6 require a string fallback ([#103](https://www.github.com/yargs/y18n/issues/103)) ([e39921e](https://www.github.com/yargs/y18n/commit/e39921e1017f88f5d8ea97ddea854ffe92d68e74))
-
-### [5.0.2](https://www.github.com/yargs/y18n/compare/v5.0.1...v5.0.2) (2020-10-01)
-
-
-### Bug Fixes
-
-* **deno:** update types for deno ^1.4.0 ([#100](https://www.github.com/yargs/y18n/issues/100)) ([3834d9a](https://www.github.com/yargs/y18n/commit/3834d9ab1332f2937c935ada5e76623290efae81))
-
-### [5.0.1](https://www.github.com/yargs/y18n/compare/v5.0.0...v5.0.1) (2020-09-05)
-
-
-### Bug Fixes
-
-* main had old index path ([#98](https://www.github.com/yargs/y18n/issues/98)) ([124f7b0](https://www.github.com/yargs/y18n/commit/124f7b047ba9596bdbdf64459988304e77f3de1b))
-
-## [5.0.0](https://www.github.com/yargs/y18n/compare/v4.0.0...v5.0.0) (2020-09-05)
-
-
-### ⚠ BREAKING CHANGES
-
-* exports maps are now used, which modifies import behavior.
-* drops Node 6 and 4. begin following Node.js LTS schedule (#89)
-
-### Features
-
-* add support for ESM and Deno [#95](https://www.github.com/yargs/y18n/issues/95)) ([4d7ae94](https://www.github.com/yargs/y18n/commit/4d7ae94bcb42e84164e2180366474b1cd321ed94))
-
-
-### Build System
-
-* drops Node 6 and 4. begin following Node.js LTS schedule ([#89](https://www.github.com/yargs/y18n/issues/89)) ([3cc0c28](https://www.github.com/yargs/y18n/commit/3cc0c287240727b84eaf1927f903612ec80f5e43))
-
-### 4.0.1 (2020-10-25)
-
-
-### Bug Fixes
-
-* address prototype pollution issue ([#108](https://www.github.com/yargs/y18n/issues/108)) ([a9ac604](https://www.github.com/yargs/y18n/commit/7de58ca0d315990cdb38234e97fc66254cdbcd71))
-
-## [4.0.0](https://github.com/yargs/y18n/compare/v3.2.1...v4.0.0) (2017-10-10)
-
-
-### Bug Fixes
-
-* allow support for falsy values like 0 in tagged literal ([#45](https://github.com/yargs/y18n/issues/45)) ([c926123](https://github.com/yargs/y18n/commit/c926123))
-
-
-### Features
-
-* **__:** added tagged template literal support ([#44](https://github.com/yargs/y18n/issues/44)) ([0598daf](https://github.com/yargs/y18n/commit/0598daf))
-
-
-### BREAKING CHANGES
-
-* **__:** dropping Node 0.10/Node 0.12 support
+[keep-a-changelog]: https://github.com/olivierlacan/keep-a-changelog
