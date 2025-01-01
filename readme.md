@@ -1,226 +1,46 @@
-# zwitch
+# strip-ansi [![Build Status](https://travis-ci.org/chalk/strip-ansi.svg?branch=master)](https://travis-ci.org/chalk/strip-ansi)
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
+> Strip [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) from a string
 
-Handle values based on a field.
-
-## Contents
-
-*   [What is this?](readme.md##what-is-this)
-*   [When should I use this?](readme.md##when-should-i-use-this)
-*   [Install](readme.md##install)
-*   [Use](readme.md##use)
-*   [API](readme.md##api)
-    *   [`zwitch(key[, options])`](#zwitchkey-options)
-    *   [`one(value[, rest…])`](#onevalue-rest)
-    *   [`function handler(value[, rest…])`](#function-handlervalue-rest)
-*   [Types](readme.md##types)
-*   [Compatibility](readme.md##compatibility)
-*   [Related](readme.md##related)
-*   [Contribute](readme.md##contribute)
-*   [Security](readme.md##security)
-*   [License](readme.md##license)
-
-## What is this?
-
-This is a tiny package that lets you `switch` between some field on objects.
-
-## When should I use this?
-
-This package is very useful when mapping one AST to another.
-It’s a lot like a `switch` statement on one field, but it’s extensible.
 
 ## Install
 
-This package is [ESM only][esm].
-In Node.js (version 14.14+, 16.0+), install with [npm][]:
-
-```sh
-npm install zwitch
+```
+$ npm install strip-ansi
 ```
 
-In Deno with [`esm.sh`][esmsh]:
+
+## Usage
 
 ```js
-import {zwitch} from 'https://esm.sh/zwitch@2'
+const stripAnsi = require('strip-ansi');
+
+stripAnsi('\u001B[4mUnicorn\u001B[0m');
+//=> 'Unicorn'
+
+stripAnsi('\u001B]8;;https://github.com\u0007Click\u001B]8;;\u0007');
+//=> 'Click'
 ```
 
-In browsers with [`esm.sh`][esmsh]:
 
-```html
-<script type="module">
-  import {zwitch} from 'https://esm.sh/zwitch@2?bundle'
-</script>
-```
+## strip-ansi for enterprise
 
-## Use
+Available as part of the Tidelift Subscription.
 
-```js
-import {zwitch} from 'zwitch'
+The maintainers of strip-ansi and thousands of other packages are working with Tidelift to deliver commercial support and maintenance for the open source dependencies you use to build your applications. Save time, reduce risk, and improve code health, while paying the maintainers of the exact dependencies you use. [Learn more.](https://tidelift.com/subscription/pkg/npm-strip-ansi?utm_source=npm-strip-ansi&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)
 
-const handle = zwitch('type', {invalid, unknown, handlers: {alpha: handleAlpha}})
-
-handle({type: 'alpha'})
-
-function handleAlpha() { /* … */ }
-```
-
-Or, with a `switch` statement:
-
-```js
-const field = 'type'
-
-function handle(value) {
-  let fn = invalid
-
-  if (value && typeof value === 'object' && field in value) {
-    switch (value[field]) {
-      case 'alpha':
-        fn = handleAlpha
-        break
-      default:
-        fn = unknown
-        break
-    }
-  }
-
-  return fn.apply(this, arguments)
-}
-
-handle({type: 'alpha'})
-
-function handleAlpha() { /* … */ }
-function unknown() { /* … */ }
-function invalid() { /* … */ }
-```
-
-## API
-
-This package exports the identifier `zwitch`.
-There is no default export.
-
-### `zwitch(key[, options])`
-
-Create a switch, based on a `key` (`string`).
-
-##### `options`
-
-Options can be omitted and added later to `one`.
-
-###### `options.handlers`
-
-Handlers to use, stored on `one.handlers` (`Record<string, Function>`,
-optional).
-
-###### `options.unknown`
-
-Handler to use for unknown values, stored on `one.unknown` (`Function`,
-optional).
-
-###### `options.invalid`
-
-Handler to use for invalid values, stored on `one.invalid` (`Function`,
-optional).
-
-###### Returns
-
-See [`one`][one] (`Function`).
-
-### `one(value[, rest…])`
-
-Handle one value.
-Based on the bound `key`, a respective handler will be called.
-If `value` is not an object, or doesn’t have a `key` property, the special
-“invalid” handler will be called.
-If `value` has an unknown `key`, the special “unknown” handler will be called.
-
-All arguments, and the context object (`this`), are passed through to the
-[handler][], and it’s result is returned.
-
-###### `one.handlers`
-
-Map of [handler][]s (`Record<string, Function>`).
-
-###### `one.invalid`
-
-Special [`handler`][handler] called if a value doesn’t have a `key` property.
-If not set, `undefined` is returned for invalid values.
-
-###### `one.unknown`
-
-Special [`handler`][handler] called if a value does not have a matching
-handler.
-If not set, `undefined` is returned for unknown values.
-
-### `function handler(value[, rest…])`
-
-Handle one value.
-
-## Types
-
-This package is fully typed with [TypeScript][].
-It exports the types `Handler`, `UnknownHandler`, `InvalidHandler`, and
-`Options`.
-
-## Compatibility
-
-This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 14.14+ and 16.0+.
-It also works in Deno and modern browsers.
 
 ## Related
 
-*   [`mapz`](https://github.com/wooorm/mapz)
-    — functional map
+- [strip-ansi-cli](https://github.com/chalk/strip-ansi-cli) - CLI for this module
+- [strip-ansi-stream](https://github.com/chalk/strip-ansi-stream) - Streaming version of this module
+- [has-ansi](https://github.com/chalk/has-ansi) - Check if a string has ANSI escape codes
+- [ansi-regex](https://github.com/chalk/ansi-regex) - Regular expression for matching ANSI escape codes
+- [chalk](https://github.com/chalk/chalk) - Terminal string styling done right
 
-## Contribute
 
-Yes please!
-See [How to Contribute to Open Source][contribute].
+## Maintainers
 
-## Security
+- [Sindre Sorhus](https://github.com/sindresorhus)
+- [Josh Junon](https://github.com/qix-)
 
-This package is safe.
-
-## License
-
-[MIT][license] © [Titus Wormer][author]
-
-<!-- Definitions -->
-
-[build-badge]: https://github.com/wooorm/zwitch/workflows/main/badge.svg
-
-[build]: https://github.com/wooorm/zwitch/actions
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/zwitch.svg
-
-[coverage]: https://codecov.io/github/wooorm/zwitch
-
-[downloads-badge]: https://img.shields.io/npm/dm/zwitch.svg
-
-[downloads]: https://www.npmjs.com/package/zwitch
-
-[size-badge]: https://img.shields.io/bundlephobia/minzip/zwitch.svg
-
-[size]: https://bundlephobia.com/result?p=zwitch
-
-[npm]: https://docs.npmjs.com/cli/install
-
-[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
-
-[esmsh]: https://esm.sh
-
-[typescript]: https://www.typescriptlang.org
-
-[contribute]: https://opensource.guide/how-to-contribute/
-
-[license]: license
-
-[author]: https://wooorm.com
-
-[one]: #onevalue-rest
-
-[handler]: #function-handlervalue-rest
