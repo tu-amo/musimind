@@ -1,41 +1,50 @@
-<!-- BEGIN MICROSOFT SECURITY.MD V0.0.9 BLOCK -->
+# Security Policy
 
-## Security
+The most up-to-date version of this document can be found at <https://github.com/xmldom/xmldom/security/policy>.
 
-Microsoft takes the security of our software products and services seriously, which includes all source code repositories managed through our GitHub organizations, which include [Microsoft](https://github.com/Microsoft), [Azure](https://github.com/Azure), [DotNet](https://github.com/dotnet), [AspNet](https://github.com/aspnet) and [Xamarin](https://github.com/xamarin).
+## Supported Versions
 
-If you believe you have found a security vulnerability in any Microsoft-owned repository that meets [Microsoft's definition of a security vulnerability](https://aka.ms/security.md/definition), please report it to us as described below.
+This repository contains the code for the libraries `xmldom` and `@xmldom/xmldom` on npm.
 
-## Reporting Security Issues
+As long as we didn't publish v1, we aim to maintain the last two minor versions with security fixes. If it is possible we provide security fixes as path versions.
+If you think there is a good reason to also patch an earlier version let us know in a github issue or the release discussion once the fix has been provided. 
+The maintainers will consider it and if we agree and have/find the required resources, a patch for that version will be provided.
 
-**Please do not report security vulnerabilities through public GitHub issues.**
+Please notice that [we are no longer able to publish the (unscoped) `xmldom` package](https://github.com/xmldom/xmldom/issues/271), 
+and that all existing versions of `xmldom` are affected by at least one security vulnerability and should be considered deprecated.
+You can still report issues regarding `xmldom` as described below.
 
-Instead, please report them to the Microsoft Security Response Center (MSRC) at [https://msrc.microsoft.com/create-report](https://aka.ms/security.md/msrc/create-report).
+If you need help with migrating from `xmldom` to `@xmldom/xmldom`, file a github issue or PR in the affected repository and mention @karfau.
 
-If you prefer to submit without logging in, send email to [secure@microsoft.com](mailto:secure@microsoft.com).  If possible, encrypt your message with our PGP key; please download it from the [Microsoft Security Response Center PGP Key page](https://aka.ms/security.md/msrc/pgp).
+## Reporting vulnerabilities
 
-You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Additional information can be found at [microsoft.com/msrc](https://www.microsoft.com/msrc). 
+Please email reports about any security related issues you find to `security@xmldom.org`, which will forward it to the list of maintainers. 
+The maintainers will try to respond within 7 calendar days. (If nobody peplies after 7 days, please us send a reminder!)
+As part of you communication please make sure to always hit "Reply all", so all maintainers are kept in the loop.
 
-Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:
+In addition, please include the following information along with your report:
 
-  * Type of issue (e.g. buffer overflow, SQL injection, cross-site scripting, etc.)
-  * Full paths of source file(s) related to the manifestation of the issue
-  * The location of the affected source code (tag/branch/commit or direct URL)
-  * Any special configuration required to reproduce the issue
-  * Step-by-step instructions to reproduce the issue
-  * Proof-of-concept or exploit code (if possible)
-  * Impact of the issue, including how an attacker might exploit the issue
+- Your name and affiliation (if any).
+- A description of the technical details of the vulnerabilities. It is very important to let us know how we can reproduce your findings.
+- An explanation who can exploit this vulnerability, and what they gain when doing so -- write an attack scenario. This will help us evaluate your report quickly, especially if the issue is complex.
+- Whether this vulnerability public or known to third parties. If it is, please provide details.
 
-This information will help us triage your report more quickly.
+If you believe that an existing (public) issue is security-related, please send an email to `security@xmldom.org`. 
+The email should include the issue URL and a short description of why it should be handled according to this security policy.
 
-If you are reporting for a bug bounty, more complete reports can contribute to a higher bounty award. Please visit our [Microsoft Bug Bounty Program](https://aka.ms/security.md/msrc/bounty) page for more details about our active programs.
+Once an issue is reported, the maintainers use the following disclosure process:
 
-## Preferred Languages
+- When a report is received, we confirm the issue, determine its severity and the affected versions.
+- If we know of specific third-party services or software based on xmldom that require mitigation before publication, those projects will be notified.
+- A [github security advisory](https://docs.github.com/en/code-security/security-advisories/about-github-security-advisories) is [created](https://docs.github.com/en/code-security/security-advisories/creating-a-security-advisory) (but not published) which details the problem and steps for mitigation.
+- If the reporter provides a github account and agrees to it, we (add that github account as a collaborator on the advisuory)[https://docs.github.com/en/code-security/security-advisories/adding-a-collaborator-to-a-security-advisory].
+- The vulnerability is fixed in a [private fork](https://docs.github.com/en/code-security/security-advisories/collaborating-in-a-temporary-private-fork-to-resolve-a-security-vulnerability) and potential workarounds are identified.
+- The maintainers audit the existing code to find any potential similar problems.
+- The release for the current minor version and the [security advisory are published](https://docs.github.com/en/code-security/security-advisories/publishing-a-security-advisory).
+- The release(s) for previous minor version(s) are published.
 
-We prefer all communications to be in English.
+We credit reporters for identifying security issues, if they confirm that they want to.
 
-## Policy
+## Known vulnerabilities
 
-Microsoft follows the principle of [Coordinated Vulnerability Disclosure](https://aka.ms/security.md/cvd).
-
-<!-- END MICROSOFT SECURITY.MD BLOCK -->
+See https://github.com/xmldom/xmldom/security/advisories?state=published
