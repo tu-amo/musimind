@@ -1,56 +1,58 @@
-# require-from-string [![Build Status](https://travis-ci.org/floatdrop/require-from-string.svg?branch=master)](https://travis-ci.org/floatdrop/require-from-string)
+# is-plain-obj
 
-Load module from string in Node.
+> Check if a value is a plain object
+
+An object is plain if it's created by either `{}`, `new Object()`, or `Object.create(null)`.
 
 ## Install
 
 ```
-$ npm install --save require-from-string
+$ npm install is-plain-obj
 ```
-
 
 ## Usage
 
 ```js
-var requireFromString = require('require-from-string');
+import isPlainObject from 'is-plain-obj';
+import {runInNewContext} from 'node:vm';
 
-requireFromString('module.exports = 1');
-//=> 1
+isPlainObject({foo: 'bar'});
+//=> true
+
+isPlainObject(new Object());
+//=> true
+
+isPlainObject(Object.create(null));
+//=> true
+
+// This works across realms
+isPlainObject(runInNewContext('({})'));
+//=> true
+
+isPlainObject([1, 2, 3]);
+//=> false
+
+class Unicorn {}
+isPlainObject(new Unicorn());
+//=> false
+
+isPlainObject(Math);
+//=> false
 ```
 
+## Related
 
-## API
+- [is-obj](https://github.com/sindresorhus/is-obj) - Check if a value is an object
+- [is](https://github.com/sindresorhus/is) - Type check values
 
-### requireFromString(code, [filename], [options])
+---
 
-#### code
-
-*Required*  
-Type: `string`
-
-Module code.
-
-#### filename
-Type: `string`  
-Default: `''`
-
-Optional filename.
-
-
-#### options
-Type: `object`
-
-##### appendPaths
-Type: `Array`
-
-List of `paths`, that will be appended to module `paths`. Useful, when you want
-to be able require modules from these paths.
-
-##### prependPaths
-Type: `Array`
-
-Same as `appendPaths`, but paths will be prepended.
-
-## License
-
-MIT © [Vsevolod Strukchinsky](http://github.com/floatdrop)
+<div align="center">
+	<b>
+		<a href="https://tidelift.com/subscription/pkg/npm-is-plain-obj?utm_source=npm-is-plain-obj&utm_medium=referral&utm_campaign=readme">Get professional support for this package with a Tidelift subscription</a>
+	</b>
+	<br>
+	<sub>
+		Tidelift helps make open source sustainable for maintainers while giving companies<br>assurances about security, maintenance, and licensing for their dependencies.
+	</sub>
+</div>
